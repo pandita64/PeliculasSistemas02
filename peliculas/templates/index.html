@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Peliculas animadas</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .menu-btn {
+            display: none;
+            /* El botón de menú estará oculto inicialmente */
+            cursor: pointer;
+            padding: 15px 20px;
+            background: #333;
+            color: #fff;
+            border: 1px solid white;
+            width: 30px;
+            margin: auto;
+        }
+
+        /* Estilos para las tarjetas de productos */
+        .product-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 20px;
+            width: 300px;
+            display: inline-block;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .ucultando {
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                /* Muestra solo 2 líneas de texto */
+                -webkit-box-orient: vertical;
+            }
+
+            .ucultando::after {
+                content: "...";
+                display: inline-block;
+                position: relative;
+                top: -0.2em;
+                padding-left: 5px;
+                /* Espacio entre el texto truncado y los puntos suspensivos */
+            }
+
+        /* Estilos responsivos */
+        @media (max-width: 600px) {
+
+            /* Cambios para dispositivos móviles */
+            .product-card {
+                width: 90%;
+                margin: 10px auto;
+            }
+
+            .menu-btn {
+                display: block;
+                /* Mostrar el botón de menú en dispositivos más pequeños */
+            }
+
+            header {
+                padding: 10px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>{{ mensaje }}</h1>
+    </header>
+    <section class="container">
+        {% for item in peliculas %}
+        <div class="product-card">
+            <img src="{{item.imagen.url}}"
+                alt="Producto 1">
+            <h3>Pelicula 1</h3>
+            <p class="ucultando">{{ item.descripcion }}</p>
+            <p>$19.99</p>
+            <a href="/3-ver-mas.html">Comprar</a>
+        </div>
+        {% endfor %}
+    </section>
+    <footer>
+        &copy; 2023 Lista de Películas
+    </footer>
+</body>
+
+</html>
